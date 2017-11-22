@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
+        <script type="text/javascript" src="JavaWebsite_TLyons.js">/**/</script>
+        <!--#include virtual="menu.html" -->
         <link rel="stylesheet" type="text/css" href="HomepageTLyons"/>
         <title>Newtfire Homepage</title>
         <meta charset="UTF-8" />
@@ -10,22 +12,103 @@
     <body>
         <h1>Cries of Valhalla</h1>
         <img src="Bismark.jpg" alt="Chancellor Otto von Bismark" width="200" height= "300"></img>
-        <p> Otto von Bismark is one of my favorite historical figures. He accomplished two main
+        <p> <person_Name="Otto von Bismark">Otto von Bismark</person_Name> is one of my favorite historical figures. He accomplished two main
             tasks while alive. First he unified the different states of Germany into an empire.
-            While Chancellor, Otto von Bismark kept Germany at peace with other European powers.
-            Bismark was a revolutionary conservative and a hero to German nationalists.</p>
-        <h2>Interesting facts about Bismark</h2>
+            While Chancellor, <person Name="Otto von Bismark">Otto von Bismark</person> kept <place Location="Germany">Germany</place> at peace with other European powers.
+            <person Name="Bismark">Bismark</person> was a revolutionary conservative and a hero to German nationalists.</p>
+        <h2>Interesting facts about <person name="Bismark">Bismark</person></h2>
         <ul>
-            <li>When Otto von Bismarck became its Prime Minister in 1862, Prussia was a second-rate
-                power overshadowed by Russia </li>
-            <li>Bismarck had destroyed the entire European balance of power in the space of seven
+            <li>When <person Name="Otto von Bismarck">Otto Von Bismark</person> became its Prime Minister in <year Date="1862">1862</year>, Prussia was a second-rate
+                power overshadowed by <place Location="Russia">Russia</place> </li>
+            <li><person Name="Bismarck">Bismark</person> had destroyed the entire European balance of power in the space of seven
                 years. </li>
-            <li>The newly-unified German state was soon exploding with industrial energy,
-                outstripping British coal and steel production by the end of the century, and
+            <li>The newly-unified <nation_Nationality="German">German</nation_Nationality> state was soon exploding with industrial energy,
+                outstripping <nation_Nationality="British">British</nation_Nationality> coal and steel production by the end of the century, and
                 leaping ahead in new industries. For example, chemical and electrical products were
-                being made in plants in Germany</li>
-            <li> When Bismarck retired in 1890, Prussia was the dominant part of a united German
-                Empire which had become the greatest power in Europe.</li>
+                being made in plants in <place Location="Germany">Germany</place></li>
+            <li> When <person Name="Bismarck">Bismark</person> retired in <year Date="1890">1890</year>, <place Location="Prussia">Prussia</place>was the dominant part of a united <place Location="German
+                Empire">German Empire</place> which had become the greatest power in <place Location="Europe">Europe</place>.</li>
         </ul>
+        
+        <ul>
+            <li><input type="checkbox" value="Name" />Name</li>
+            <li><input type="checkbox" value="Date" />Date</li>
+            <li><input type="checkbox" value="Location" />Location</li>
+            <li><input type="checkbox" value="Nationality" />Nationality</li>
+            
+        </ul>
+        <hr />
+        
+        <style>
+#mydiv {
+    position: absolute;
+    z-index: 9;
+    background-color: #f1f1f1;
+    text-align: center;
+    border: 1px solid #d3d3d3;
+}
+
+#mydivheader {
+    padding: 10px;
+    cursor: move;
+    z-index: 10;
+    background-color: #2196F3;
+    color: #fff;
+}
+</style>
+        <body>
+            
+            <h1>Random Box</h1>
+            
+            <p>Click and hold the mouse button down while moving the this box</p>
+            
+            <div id="mydiv">
+                <div id="mydivheader">This Box Moves</div>
+                <p>Just</p>
+                <p>to waste</p>
+                <p>your time.</p>
+            </div>
+            
+            <script>
+//Make the Element drag:
+dragElement(document.getElementById(("mydiv")));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+</script>
+        
     </body>
 </html>
